@@ -4,7 +4,7 @@ import { Booking } from 'src/app/model/booking';
 import { BookingService } from '../booking.service';
 
 @Component({
-    selector: 'app-add-booking',
+    selector: 'app-bookings-add',
     templateUrl: './add-booking.component.html',
     styleUrls: ['./add-booking.component.scss']
 })
@@ -19,17 +19,17 @@ export class AddBookingComponent implements OnInit {
     }
 
     constructor(private router: Router,
-        private activatedRoute: ActivatedRoute,
-        private bookingService: BookingService) { }
+                private activatedRoute: ActivatedRoute,
+                private bookingService: BookingService) { }    
 
     ngOnInit(): void {
         if (this.router.url != "/addBooking") {
             var id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
             var bookingById = this.bookingService.getBookingById(id);
             this.booking = bookingById;
-        }   
+        }        
     }
-
+    
     save(): void {
         var bookingById = this.bookingService.getBookingById(this.booking.id);
         
@@ -51,5 +51,5 @@ export class AddBookingComponent implements OnInit {
             this.booking.endDate = new Date(val);
         }
     }
-    
+
 }
