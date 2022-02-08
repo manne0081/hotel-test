@@ -31,7 +31,7 @@ export class AddBookingComponent implements OnInit {
         }        
     }
     
-    save(): void {        
+    save(): void {
         this.bookingService.addBooking(this.booking).subscribe();
         this.router.navigate(['bookings']);
     }

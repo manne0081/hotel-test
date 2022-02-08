@@ -1,0 +1,42 @@
+<form #formSignup="ngForm" action="">
+    <!-- <div [class.bg-danger]="formSignup.invalid" class="card"> -->
+    <div class="card">
+
+        <div class="card-header">
+            <h5>Event Benachrichtigung</h5>
+        </div>
+
+        <div class="card-body">
+            <div class="row mb-2">
+                <div class="col">
+                    <input #inputEmail="ngModel" class="form-control" type="email" placeholder="Bitte E-Mail Adresse eingeben"
+                            required name="signupMail" minlength="8" email [(ngModel)]="signupMail">
+                </div>
+            </div>
+        </div>
+        
+        <div *ngIf="inputEmail.invalid && (inputEmail.touched || inputEmail.dirty)">
+            <div class="col">
+
+                <div class="alert alert-danger" *ngIf="inputEmail.errors?.['required']">
+                    E-Mail Adresse ist erfoderlich.
+                </div>
+
+                <div class="alert alert-danger" *ngIf="inputEmail.errors?.['minlength']">
+                    Es sind mindestens 8 Zeichen erfoderlich.
+                </div>
+
+                <div class="alert alert-danger" *ngIf="inputEmail.errors?.['email'] && !inputEmail.hasError('minlength')">
+                    Dies ist keine E-Mail Adresse.
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button (click)="onSubmit()" class="btn btn-primary"
+                    [disabled]="formSignup.invalid">Submit</button>
+        </div>
+
+    </div>
+</form>
