@@ -10,7 +10,6 @@ import { AddBookingComponent } from './bookings/add-booking/add-booking.componen
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { EventSignupComponent } from './event-signup/event-signup.component';
-
 @NgModule({
   declarations: [
     AppComponent,
